@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+  <!--
+    서버 측 주소 만들기
+    
+    /ContextPath/URLMapping
+  -->
+
+  <!-- 1. <a> 태그 요청 -->
+  <div>
+    <a href="/servlet/request?age=10">요청</a>
+  </div>
+  
+  <!-- 2. JavaScript : location 객체 요청 -->
+  <div>
+    <a href="javascript:ex1()">요청</a>
+    <input type="hidden" id="age" value="20">
+  </div>
+  <script type="text/javascript">
+    const ex1 = ()=>{
+      const age = document.getElementById('age');
+      location.href = '/servlet/request?age=' + age.value;
+    }
+  </script>
+  <div>
+    <button type="button" id="btn">요청</button>
+  </div>
+  <script>
+    document.getElementById('btn').addEventListener('click', (evt)=>{
+      location.href = '/servlet/request';
+    })
+  </script>
+  
+  <!-- 3. <form> 태그 요청 : submit -->
+  <div>
+    <form action="/servlet/request" method="post">
+      <button type="submit">요청</button>
+    </form>
+  </div>
+  
+  <!-- 4. JavaScript : 비동기 요청 (별도 수업) -->
+
+</body>
+</html>
