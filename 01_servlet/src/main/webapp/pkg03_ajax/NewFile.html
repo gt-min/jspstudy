@@ -55,5 +55,58 @@
     document.getElementById('weather-btn').onclick = getWeather;
   </script>
 
+  <div>
+    <select id="siDo">
+      <option value="1100">서울</option>
+      <option value="2300">인천</option>
+    </select>
+    <select id="guGun">
+      <option value="1116">강남구</option>
+      <option value="2304">부평구</option>
+    </select>
+    <button type="button" id="accident-btn">사망자수가져오기</button>
+  </div>
+  <style>
+    #accidents {
+      display: flex;
+      width: 950px;
+      margin: auto;
+    }
+    .accident {
+      width: 300px;
+      height: 100px;
+      border: 1px solid gray;
+    }
+  </style>
+  <div id="accidents"></div>
+  <script>
+    const accidentBtn = $('#accident-btn');
+    accidentBtn.on('click', (evt)=>{
+      $.ajax({
+        /* 요청 */
+        type: 'get',
+        url: '/servlet/accident',
+        data: 'siDo=' + $('#siDo').val() + '&guGun=' + $('#guGun').val(),
+        /* 응답 */
+        dataType: 'json'
+      })
+      .done(resData=>{
+        //console.log(resData)
+        const accidents = $('#accidents');
+        accidents.empty();
+        $.each(resData.items.item, (i, accident)=>{
+          console.log(accident);
+          let div = '<div class="accident">';
+          div += '<ul>';
+          div += '<li>날짜 : ' + accident.occrrnc_dt + '</li>';
+          div += '<li>인원 : ' + accident.dth_dnv_cnt + '</li>';
+          div += '</ul>';
+          div += '</div>';
+          accidents.append(div);
+        })
+      })
+    })
+  </script>
+
 </body>
 </html>

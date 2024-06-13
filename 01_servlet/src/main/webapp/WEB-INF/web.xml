@@ -39,4 +39,14 @@
     <servlet-name>Weather</servlet-name>
     <url-pattern>/weather</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Accident</display-name>
+    <servlet-name>Accident</servlet-name>
+    <servlet-class>pkg03_ajax.Accident</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Accident</servlet-name>
+    <url-pattern>/accident</url-pattern>
+  </servlet-mapping>
 </web-app>
