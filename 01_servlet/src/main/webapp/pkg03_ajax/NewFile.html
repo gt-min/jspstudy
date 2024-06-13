@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../assets/lib/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <div>
+    <button type="button" id="weather-btn">현재날씨가져오기</button>
+  </div>
+  <div>
+    <table border="1">
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <script>
+    const getWeather = ()=>{
+      
+      const options = {
+        method: 'GET'
+      }
+      
+      fetch('/servlet/weather', options)
+      .then(response=>response.text())
+      .then(resData=>{
+        console.log(resData);
+      })
+      
+    }
+    document.getElementById('weather-btn').onclick = getWeather;
+  </script>
+
+
+</body>
+</html>
