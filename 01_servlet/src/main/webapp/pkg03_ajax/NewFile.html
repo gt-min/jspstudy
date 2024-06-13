@@ -68,14 +68,19 @@
   </div>
   <style>
     #accidents {
-      display: flex;
+      overflow: hidden;
       width: 950px;
-      margin: auto;
     }
     .accident {
+      float: left;
       width: 300px;
       height: 100px;
       border: 1px solid gray;
+      margin: 5px 5px 0 0;
+      cursor: pointer;
+    }
+    .accident:hover {
+      background-color: silver;
     }
   </style>
   <div id="accidents"></div>
