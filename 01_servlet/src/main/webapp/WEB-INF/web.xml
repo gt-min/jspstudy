@@ -129,4 +129,54 @@
     <servlet-name>ReadCookie</servlet-name>
     <url-pattern>/readcookie</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCookie</display-name>
+    <servlet-name>DeleteCookie</servlet-name>
+    <servlet-class>pkg07_Cookie.DeleteCookie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCookie</servlet-name>
+    <url-pattern>/deletecookie</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyServletContext</display-name>
+    <servlet-name>MyServletContext</servlet-name>
+    <servlet-class>pkg08_databind.MyServletContext</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyServletContext</servlet-name>
+    <url-pattern>/myservletcontext</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyHttpSession</display-name>
+    <servlet-name>MyHttpSession</servlet-name>
+    <servlet-class>pkg08_databind.MyHttpSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyHttpSession</servlet-name>
+    <url-pattern>/myhttpsession</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyHttpServletRequest</display-name>
+    <servlet-name>MyHttpServletRequest</servlet-name>
+    <servlet-class>pkg08_databind.MyHttpServletRequest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyHttpServletRequest</servlet-name>
+    <url-pattern>/myhttpservletrequest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DataConfirm</display-name>
+    <servlet-name>DataConfirm</servlet-name>
+    <servlet-class>pkg08_databind.DataConfirm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DataConfirm</servlet-name>
+    <url-pattern>/dataconfirm</url-pattern>
+  </servlet-mapping>
 </web-app>
