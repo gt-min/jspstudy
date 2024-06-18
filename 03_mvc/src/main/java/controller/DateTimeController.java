@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.DateModel;
+import model.TimeModel;
 
 public class DateTimeController extends HttpServlet {
   
@@ -28,7 +29,8 @@ public class DateTimeController extends HttpServlet {
       path = dateModel.execute(request);  // Model 에 요청(request)을 전달한다.
       break;
     case "time":
-      System.out.println(type);      
+      TimeModel timeModel = new TimeModel();
+      timeModel.command(request, response);
       break;
     }
     
