@@ -6,7 +6,12 @@
 </head>
 <body>
 
-  <form id="file-frm" action="/servlet/upload" method="post" enctype="multipart/form-data">
+  <h1>단일 첨부</h1>
+  
+  <form action="/servlet/upload1" method="post" enctype="multipart/form-data">
+    <div>
+      <input type="text" name="name" id="name" placeholder="이름">
+    </div>
     <div>
       <input type="file" name="profile" id="profile">
     </div>
@@ -36,8 +41,13 @@
         preview.innerHTML = '<img src="' + fileReader.result + '" width="50px">';
       })
     }
-  
+    
     const checkFile = (inp)=>{
+      if(inp.files.length === 0) {
+        alert('첨부된 파일이 없습니다.');
+        preview.innerHTML = '';
+        return;       
+      }
       if(isOversize(inp.files[0])){
         alert('첨부 파일의 최대 크기는 10MB입니다.');
         inp.value = '';
