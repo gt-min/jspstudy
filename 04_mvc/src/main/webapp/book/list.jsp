@@ -47,7 +47,7 @@
   
   <script>
     $('.book').on('click', evt=>{
-      location.href = '${contextPath}/detail.do?bookNo=' + evt.target.dataset.bookNo;
+      location.href = '${contextPath}/detail.do?bookNo=' + evt.currentTarget.dataset.bookNo;
     })
   </script>
 
