@@ -17,4 +17,5 @@ CREATE SEQUENCE book_seq;
 -- SELECT book_seq.nextval FROM dual;
 
 -- 신규 책 추가하기
-INSERT INTO book_t(book_no, title, author, price) VALUES();
+-- INSERT INTO book_t(book_no, title, author, price) VALUES(book_seq.nextval, '제목', '저자', 10);
+-- COMMIT;
