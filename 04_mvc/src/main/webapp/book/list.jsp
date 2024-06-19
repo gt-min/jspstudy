@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>책목록</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <style>
   div {
     box-sizing: border-box;
@@ -37,12 +38,18 @@
 
   <div class="books">
     <c:forEach var="book" items="${books}">
-      <div class="book">
+      <div class="book" data-book-no="${book.bookNo}">
         <div>${book.bookNo}</div>
         <div>${book.title}</div>
       </div>
     </c:forEach>
   </div>
+  
+  <script>
+    $('.book').on('click', evt=>{
+      location.href = '${contextPath}/detail.do?bookNo=' + evt.target.dataset.bookNo;
+    })
+  </script>
 
 </body>
 </html>

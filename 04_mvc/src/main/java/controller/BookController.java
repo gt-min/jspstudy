@@ -31,6 +31,9 @@ public class BookController extends HttpServlet {
     case "list.do":
       actionForward = bookService.getBooks(request, response);
       break;
+    case "detail.do":
+      actionForward = bookService.getBookByNo(request, response);
+      break;
     }
     
     if(actionForward != null) {

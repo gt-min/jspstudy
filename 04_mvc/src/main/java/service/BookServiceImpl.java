@@ -33,9 +33,19 @@ public class BookServiceImpl implements BookService {
   @Override
   public ActionForward getBookByNo(HttpServletRequest request, HttpServletResponse response) {
     
-    // TODO Auto-generated method stub
+    // 요청 파라미터 bookNo
+    int bookNo = Integer.parseInt(request.getParameter("bookNo"));
     
-    return null;
+    // 반환할 Book 을 찾아서 request 에 저장하기
+    books.stream().forEach(book -> {
+      if(book.getBookNo() == bookNo) {
+        request.setAttribute("book", book);
+      }
+    });
+    
+    // 어디로 : /book/detail.jsp
+    // 어떻게 : forward
+    return new ActionForward("/book/detail.jsp", false);
     
   }
 
