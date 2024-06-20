@@ -3,6 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.BookDTO;
 
@@ -20,6 +23,7 @@ public class BookDAO {
   /* Field : 모든 메소드가 사용할 공통 요소 */
   private Connection conn;       // 접속 담당
   private PreparedStatement ps;  // 쿼리 실행
+  private ResultSet rs;          // SELECT 문 결과 담당
   
   /* Database Connection */
   private void connection() throws Exception {
@@ -41,12 +45,47 @@ public class BookDAO {
   private void close() throws Exception {
     if(conn != null) conn.close();
     if(ps != null) ps.close();
+    if(rs != null) rs.close();
   }
   
   /* 여기서부터 실제 Database 를 처리하는 메소드 */
   
   /* 모든 책 조회하기 */
-  
+  // 매개변수 : 없음
+  // 반환타입 : List<BookDTO>
+  public List<BookDTO> getBooks() {
+    
+    List<BookDTO> books = new ArrayList<BookDTO>();
+    
+    try {
+      
+      connection();
+      
+      String sql = "SELECT book_no, title, author, price FROM book_t";
+      
+      ps = conn.prepareStatement(sql);
+      
+      rs = ps.executeQuery();
+      
+      while(rs.next()) {        
+        BookDTO book = BookDTO.builder()
+            .book_no(rs.getInt(1))
+            .title(rs.getString(2))
+            .author(rs.getString(3))
+            .price(rs.getInt(4))
+            .build();
+        books.add(book);
+      }
+      
+      close();
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return books;
+    
+  }
   
   /* 특정 책 조회하기 */
   
@@ -115,6 +154,32 @@ public class BookDAO {
   }
   
   /* 기존 책 삭제하기 */
-  
+  // 매개변수 : int book_no (삭제할 책의 번호이다.)
+  // 반환타입 : int (테이블에서 삭제된 행의 개수가 반환된다.)
+  public int deleteBook(int book_no) {
+    
+    int result = 0;
+    
+    try {
+      
+      connection();
+      
+      String sql = "DELETE FROM book_t WHERE book_no = ?";
+      
+      ps = conn.prepareStatement(sql);
+      
+      ps.setInt(1, book_no);
+      
+      result = ps.executeUpdate();
+      
+      close();
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return result;
+    
+  }
   
 }
