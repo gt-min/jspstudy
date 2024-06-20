@@ -55,4 +55,13 @@ public class BookDAOTest {
     
   }
   
+  @Test
+  public void 특정책조회테스트() {
+    
+    int book_no = 1;
+    
+    assertNotNull(bookDAO.getBookByNo(book_no));
+    
+  }
+  
 }

@@ -32,10 +32,11 @@ COMMIT;
 -- DELETE FROM book_t WHERE book_no = 1;
 -- COMMIT;
 
+-- 전체 책 조회하기
+SELECT book_no, title, author, price FROM book_t;
 
-
-
-
+-- 특정 책 조회하기
+SELECT book_no, title, author, price FROM book_t WHERE book_no = 3;
 
 
 

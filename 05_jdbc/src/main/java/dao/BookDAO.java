@@ -88,7 +88,42 @@ public class BookDAO {
   }
   
   /* 특정 책 조회하기 */
-  
+  // 매개변수 : int book_no (조회할 책의 번호이다.)
+  // 반환타입 : BookDTO
+  public BookDTO getBookByNo(int book_no) {
+    
+    BookDTO book = null;
+    
+    try {
+      
+      connection();
+      
+      String sql = "SELECT book_no, title, author, price FROM book_t WHERE book_no = ?";
+      
+      ps = conn.prepareStatement(sql);
+      
+      ps.setInt(1, book_no);
+      
+      rs = ps.executeQuery();
+      
+      if(rs.next()) {
+        book = BookDTO.builder()
+            .book_no(rs.getInt(1))
+            .title(rs.getString(2))
+            .author(rs.getString(3))
+            .price(rs.getInt(4))
+            .build();
+      }
+      
+      close();
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return book;
+    
+  }
   
   /* 신규 책 추가하기 */
   // 매개변수 : BookDTO book (신규 책 정보가 저장되어 있다.)
