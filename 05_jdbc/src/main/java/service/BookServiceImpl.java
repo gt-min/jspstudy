@@ -2,6 +2,7 @@ package service;
 
 import common.ActionForward;
 import dao.BookDAO;
+import dto.BookDTO;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class BookServiceImpl implements BookService {
@@ -33,4 +34,31 @@ public class BookServiceImpl implements BookService {
     
   }
 
+  @Override
+  public ActionForward registerBook(HttpServletRequest request) {
+    
+    // 요청 파라미터 (제목, 저자, 가격)
+    String title = request.getParameter("title");
+    String author = request.getParameter("author");
+    int price = Integer.parseInt(request.getParameter("price"));
+
+    // 데이터베이스로 전달할 형식인 BookDTO 타입의 객체 생성
+    BookDTO book = BookDTO.builder()
+        .title(title)
+        .author(author)
+        .price(price)
+        .build();
+    
+    // 데이터베이스 실행
+    int result = bookDAO.insertBook(book);
+    
+    // 성공하면 : /book/list.jsp 로 가기 위한 /list.do
+    // 실패하면 : /index.jsp     로 가기 위한 /index.do
+    String path = request.getContextPath() + (result == 1 ? "/list.do" : "/index.do");
+    
+    // 이동방식 : redirect (DML)
+    return new ActionForward(path, true);
+    
+  }
+  
 }
