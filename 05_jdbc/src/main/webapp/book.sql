@@ -19,3 +19,19 @@ CREATE SEQUENCE book_seq;
 -- 신규 책 추가하기
 -- INSERT INTO book_t(book_no, title, author, price) VALUES(book_seq.nextval, '제목', '저자', 10);
 -- COMMIT;
+
+-- 기존 책 수정하기
+-- UPDATE book_t SET title = '수정제목', author = '수정저자', price = 987 WHERE book_no = 1;
+-- COMMIT;
+
+
+
+
+
+
+
+
+
+
+
+

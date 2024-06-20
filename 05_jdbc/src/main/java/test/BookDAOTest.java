@@ -10,7 +10,7 @@ import dto.BookDTO;
 public class BookDAOTest {
 
   @Test
-  public void 책넣기테스트() throws Exception {
+  public void 책넣기테스트() {
     
     BookDAO bookDAO = BookDAO.getInstance();
     
@@ -25,4 +25,20 @@ public class BookDAOTest {
     
   }
 
+  @Test
+  public void 책수정테스트() {
+    
+    BookDAO bookDAO = BookDAO.getInstance();
+    
+    BookDTO book = BookDTO.builder()
+        .book_no(1)
+        .title("어린왕자")
+        .author("생텍쥐베리")
+        .price(135)
+        .build();
+    
+    assertEquals(1, bookDAO.updateBook(book));
+    
+  }
+  
 }
