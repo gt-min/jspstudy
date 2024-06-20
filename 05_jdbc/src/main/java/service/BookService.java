@@ -7,5 +7,6 @@ public interface BookService {
   ActionForward getBooks(HttpServletRequest request);
   ActionForward getBookByNo(HttpServletRequest request);
   ActionForward registerBook(HttpServletRequest request);
+  ActionForward removeBook(HttpServletRequest request);
   
 }

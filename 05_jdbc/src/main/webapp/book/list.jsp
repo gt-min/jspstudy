@@ -51,9 +51,20 @@
   </div>
   
   <script>
+  
     $('.book').on('click', evt=>{
       location.href = '${contextPath}/detail.do?bookNo=' + evt.currentTarget.dataset.bookNo;
     })
+
+    const deleteResult = '${deleteResult}';
+    if(deleteResult !== ''){
+      if(deleteResult === '1'){
+        alert('해당 책이 삭제되었습니다.');
+      } else {
+        alert('책이 삭제되지 않았습니다.');
+      }
+    }
+    
   </script>
 
 </body>

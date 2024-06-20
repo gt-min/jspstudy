@@ -45,6 +45,9 @@ public class BookController extends HttpServlet {
     case "register.do":
       actionForward = bookService.registerBook(request);
       break;
+    case "delete.do":
+      actionForward = bookService.removeBook(request);
+      break;
     }
     
     if(actionForward != null) {

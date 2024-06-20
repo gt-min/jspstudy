@@ -61,7 +61,7 @@ public class BookDAO {
       
       connection();
       
-      String sql = "SELECT book_no, title, author, price FROM book_t";
+      String sql = "SELECT book_no, title, author, price FROM book_t ORDER BY book_no DESC";
       
       ps = conn.prepareStatement(sql);
       

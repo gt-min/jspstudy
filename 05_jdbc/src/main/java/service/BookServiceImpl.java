@@ -17,6 +17,10 @@ public class BookServiceImpl implements BookService {
     
     request.setAttribute("books", bookDAO.getBooks());
     
+    // 삭제 후 목록 보기로 갈 때 삭제 결과를 JSP 로 보내기 위해서 request 에 저장한다.
+    if(request.getParameter("deleteResult") != null)
+      request.setAttribute("deleteResult", request.getParameter("deleteResult"));
+    
     return new ActionForward("/book/list.jsp", false);
     
   }
@@ -58,6 +62,21 @@ public class BookServiceImpl implements BookService {
     
     // 이동방식 : redirect (DML)
     return new ActionForward(path, true);
+    
+  }
+  
+  @Override
+  public ActionForward removeBook(HttpServletRequest request) {
+    
+    // 삭제할 책 번호 (요청 파라미터)
+    int bookNo = Integer.parseInt(request.getParameter("bookNo"));
+    
+    // 데이터베이스에서 삭제
+    int result = bookDAO.deleteBook(bookNo);
+    
+    // 성공 / 실패 모두 /book/list.jsp 로 이동하기 위한 /list.do
+    
+    return new ActionForward(request.getContextPath() + "/list.do?deleteResult=" + result, true);
     
   }
   
