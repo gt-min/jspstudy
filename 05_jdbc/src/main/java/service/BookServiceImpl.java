@@ -74,9 +74,22 @@ public class BookServiceImpl implements BookService {
     // 데이터베이스에서 삭제
     int result = bookDAO.deleteBook(bookNo);
     
-    // 성공 / 실패 모두 /book/list.jsp 로 이동하기 위한 /list.do
+    // 성공/실패 모두 /book/list.jsp 로 이동하기 위한 /list.do
     
     return new ActionForward(request.getContextPath() + "/list.do?deleteResult=" + result, true);
+    
+  }
+  
+  @Override
+  public ActionForward editBook(HttpServletRequest request) {
+    
+    // 편집할 책의 정보를 JSP 로 전달하고 forward 한다.
+    
+    int bookNo = Integer.parseInt(request.getParameter("bookNo"));
+    
+    request.setAttribute("book", bookDAO.getBookByNo(bookNo));
+    
+    return new ActionForward("/book/edit.jsp", false);
     
   }
   

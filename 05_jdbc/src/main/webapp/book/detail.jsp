@@ -21,7 +21,7 @@
   
   <div>
     <a href="${contextPath}/list.do">목록보기</a>
-    <a href="${contextPath}/edit.do">편집</a>
+    <a href="${contextPath}/edit.do?bookNo=${book.book_no}">편집</a>
     <a href="javascript:fnDeleteBook()">삭제</a>
   </div>
   <script>
