@@ -25,11 +25,17 @@
     <a href="javascript:fnDeleteBook()">삭제</a>
   </div>
   <script>
+  
     const fnDeleteBook = ()=>{
       if(confirm('현재 책을 완전히 삭제할까요?')){
         location.href = '${contextPath}/delete.do?bookNo=${book.book_no}';
       }
     }
+    
+    const modifyMessage = '${modifyMessage}';
+    if(modifyMessage !== '')
+      alert(modifyMessage);
+    
   </script>
 
 </body>

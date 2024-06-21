@@ -9,5 +9,5 @@ public interface BookService {
   ActionForward registerBook(HttpServletRequest request);
   ActionForward removeBook(HttpServletRequest request);
   ActionForward editBook(HttpServletRequest request);
-  
+  ActionForward modifyBook(HttpServletRequest request);
 }

@@ -14,6 +14,7 @@
 
   <div>
     <form id="edit-form" action="${contextPath}/modify.do" method="post">
+      <input type="hidden" name="bookNo" value="${book.book_no}">
       <div><input type="text" name="title" id="title" value="${book.title}"></div>
       <div><input type="text" name="author" value="${book.author}"></div>
       <div><input type="text" name="price" id="price" value="${book.price}"></div>

@@ -51,6 +51,9 @@ public class BookController extends HttpServlet {
     case "edit.do":
       actionForward = bookService.editBook(request);
       break;
+    case "modify.do":
+      actionForward = bookService.modifyBook(request);
+      break;
     }
     
     if(actionForward != null) {
