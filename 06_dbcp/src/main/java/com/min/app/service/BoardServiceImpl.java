@@ -36,10 +36,15 @@ public class BoardServiceImpl implements BoardService {
     // PageUtils' begin / end 계산
     pageUtils.setPaging(total, display, page);
     
+    // sort
+    Optional<String> optSort = Optional.ofNullable(request.getParameter("sort"));
+    String sort = optSort.orElse("DESC");
+    
     // 데이터베이스로 보낼 Map<String, Object> params 생성
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("begin", pageUtils.getBegin());
     params.put("end", pageUtils.getEnd());
+    params.put("sort", sort);
     
     // 데이터베이스에서 목록 가져오기
     List<BoardDTO> boardList = boardDAO.getBoardList(params);

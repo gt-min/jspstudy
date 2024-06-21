@@ -47,7 +47,7 @@ public class BoardDAOImpl implements BoardDAO {
       conn = dataSource.getConnection();
       StringBuilder builder = new StringBuilder();
       builder.append("SELECT board_no, title, contents, create_dt, modify_dt");
-      builder.append("  FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_no DESC) AS rnum, board_no, title, contents, create_dt, modify_dt");
+      builder.append("  FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_no " + params.get("sort") + ") AS rnum, board_no, title, contents, create_dt, modify_dt");
       builder.append("          FROM board_t)");
       builder.append(" WHERE rnum BETWEEN ? AND ?");
       String sql = builder.toString();
