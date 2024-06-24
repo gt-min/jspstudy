@@ -12,6 +12,10 @@
 </head>
 <body>
 
+  <div>
+    <button type="button" onclick="location.href='${contextPath}/write.do'">작성하러가기</button>
+  </div>
+
   <div>총 ${total}개</div>
 
   <div>

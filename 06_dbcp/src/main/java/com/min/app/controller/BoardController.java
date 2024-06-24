@@ -30,7 +30,9 @@ public class BoardController extends HttpServlet {
     
     switch(urlMapping) {
     // 단순 이동 (서비스가 필요하지 않다. forward 로 이동한다.)
-    
+    case "write.do":
+      actionForward = new ActionForward("/board/write.jsp", false);
+      break;
     // 비즈니스 로직 처리 (서비스가 필요하다.)
     case "list.do":
       actionForward = boardService.getBoardList(request);
