@@ -103,8 +103,22 @@ public class BoardDAOImpl implements BoardDAO {
 
   @Override
   public int insertBoard(BoardDTO board) {
-    // TODO Auto-generated method stub
-    return 0;
+    
+    int result = 0;
+    
+    try {
+      conn = dataSource.getConnection();
+      String sql = "INSERT INTO board_t(board_no, title, contents, create_dt, modify_dt) VALUES(board_seq.nextval, ?, ?, CURRENT_DATE, CURRENT_DATE)";
+      ps = conn.prepareStatement(sql);
+      ps.setString(1, board.getTitle());
+      ps.setString(2, board.getContents());
+      result = ps.executeUpdate();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return result;
+    
   }
 
   @Override

@@ -65,5 +65,12 @@
     </tfoot>
   </table>
 
+  <script>
+  
+    if('${registerMessage}' !== '')
+      alert('${registerMessage}');
+  
+  </script>
+
 </body>
 </html>

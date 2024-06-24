@@ -49,6 +49,11 @@ public class BoardServiceImpl implements BoardService {
     // 데이터베이스에서 목록 가져오기
     List<BoardDTO> boardList = boardDAO.getBoardList(params);
     
+    // registerBoard() 실행 이후인 경우, /board/list.jsp 로 성공/실패 메시지를 전달함
+    if(request.getParameter("register") != null) {
+      request.setAttribute("registerMessage", request.getParameter("register").equals("1") ? "게시글 추가 성공" : "게시글 추가 실패");
+    }
+    
     // /board/list.jsp 로 보낼 데이터 저장하기
     request.setAttribute("total", total);
     request.setAttribute("boardList", boardList);
@@ -69,8 +74,23 @@ public class BoardServiceImpl implements BoardService {
 
   @Override
   public ActionForward registerBoard(HttpServletRequest request) {
-    // TODO Auto-generated method stub
-    return null;
+    
+    // 요청 파라미터
+    String title = request.getParameter("title");
+    String contents = request.getParameter("contents");
+    
+    // 데이터베이스로 전달할 BoardDTO 객체 생성
+    BoardDTO board = BoardDTO.builder()
+        .title(title)
+        .contents(contents)
+        .build();
+    
+    // 데이터베이스에 추가하기
+    int result = boardDAO.insertBoard(board);
+    
+    // /board/list.jsp 로 redirect 이동하기
+    return new ActionForward(request.getContextPath() + "/list.do?register=" + result, true);
+    
   }
 
   @Override
