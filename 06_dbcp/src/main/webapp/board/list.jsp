@@ -56,7 +56,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4"></td>
+        <td colspan="4">${paging}</td>
       </tr>
     </tfoot>
   </table>

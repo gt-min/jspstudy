@@ -54,6 +54,7 @@ public class BoardServiceImpl implements BoardService {
     request.setAttribute("boardList", boardList);
     request.setAttribute("sort", sort);
     request.setAttribute("display", display);
+    request.setAttribute("paging", pageUtils.getPaging(request.getRequestURI(), sort, display));
     
     // SELECT 이후에는 forward 로 이동한다.
     return new ActionForward("/board/list.jsp", false);
