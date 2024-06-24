@@ -40,6 +40,18 @@ public class BoardController extends HttpServlet {
     case "register.do":
       actionForward = boardService.registerBoard(request);
       break;
+    case "removeBoardList.do":
+      actionForward = boardService.removeBoardList(request);
+      break;
+    case "detail.do":
+      actionForward = boardService.getBoardByNo(request);
+      break;
+    case "modify.do":
+      actionForward = boardService.modifyBoard(request);
+      break;
+    case "removeBoard.do":
+      actionForward = boardService.removeBoard(request);
+      break;
     }
     
     if(actionForward != null) {

@@ -39,36 +39,43 @@
     })
   </script>
 
-  <table border="1">
-    <thead>
-      <tr>
-        <td></td>
-        <td>게시글번호</td>
-        <td>제목</td>
-        <td>작성일자</td>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach items="${boardList}" var="board">
+  <form action="${contextPath}/removeBoardList.do" method="post">
+    <table border="1">
+      <thead>
         <tr>
-          <td><input type="checkbox" class="each-chk"></td>
-          <td>${board.board_no}</td>
-          <td>${board.title}</td>
-          <td>${board.create_dt}</td>
+          <td><button type="submit">선택삭제</button></td>
+          <td>게시글번호</td>
+          <td>제목</td>
+          <td>작성일자</td>
         </tr>
-      </c:forEach>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="4">${paging}</td>
-      </tr>
-    </tfoot>
-  </table>
-
+      </thead>
+      <tbody>
+        <c:forEach items="${boardList}" var="board">
+          <tr>
+            <td><input type="checkbox" name="board_no_list" value="${board.board_no}" class="each-chk"></td>
+            <td>${board.board_no}</td>
+            <td><a href="${contextPath}/detail.do?board_no=${board.board_no}">${board.title}</a></td>
+            <td>${board.create_dt}</td>
+          </tr>
+        </c:forEach>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">${paging}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
   <script>
   
     if('${registerMessage}' !== '')
       alert('${registerMessage}');
+
+    if('${removeMessage}' !== '')
+      alert('${removeMessage}');
+    
+    if('${modifyMessage}' !== '')
+      alert('${modifyMessage}');
   
   </script>
 

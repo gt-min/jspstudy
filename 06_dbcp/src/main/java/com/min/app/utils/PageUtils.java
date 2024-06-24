@@ -42,24 +42,24 @@ public class PageUtils {
     
     // <
     if(beginPage == 1)
-      builder.append("<button style=\"color: silver;\">&lt;</button>");
+      builder.append("<button type=\"button\" style=\"color: silver;\">&lt;</button>");
     else
-      builder.append("<button onclick=\"location.href='"+requestURI+"?page="+(beginPage-1)+"&sort="+sort+"&display="+display+"'\">&lt;</button>");
+      builder.append("<button type=\"button\" onclick=\"location.href='"+requestURI+"?page="+(beginPage-1)+"&sort="+sort+"&display="+display+"'\">&lt;</button>");
     
     // 1 2 3 4 5 6 7 8 9 10
     for(int p = beginPage; p <= endPage; p++) {
       if(p == page) {
-        builder.append("<button style=\"color: limegreen;\" onclick=\"location.href='"+requestURI+"?page="+(p)+"&sort="+sort+"&display="+display+"'\">"+p+"</button>");
+        builder.append("<button type=\"button\" style=\"color: limegreen;\" onclick=\"location.href='"+requestURI+"?page="+(p)+"&sort="+sort+"&display="+display+"'\">"+p+"</button>");
       } else {
-        builder.append("<button onclick=\"location.href='"+requestURI+"?page="+(p)+"&sort="+sort+"&display="+display+"'\">"+p+"</button>");        
+        builder.append("<button type=\"button\" onclick=\"location.href='"+requestURI+"?page="+(p)+"&sort="+sort+"&display="+display+"'\">"+p+"</button>");        
       }
     }
     
     // >
     if(endPage == totalPage) {
-      builder.append("<button style=\"color: silver;\">&gt;</button>");
+      builder.append("<button type=\"button\" style=\"color: silver;\">&gt;</button>");
     } else {
-      builder.append("<button onclick=\"location.href='"+requestURI+"?page="+(endPage+1)+"&sort="+sort+"&display="+display+"'\">&gt;</button>");
+      builder.append("<button type=\"button\" onclick=\"location.href='"+requestURI+"?page="+(endPage+1)+"&sort="+sort+"&display="+display+"'\">&gt;</button>");
     }
     
     // </div>
