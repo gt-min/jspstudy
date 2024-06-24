@@ -12,15 +12,28 @@
 </head>
 <body>
 
-  <!-- 0624 : display 바꾸기 작업 해야 함 -->
-
   <div>총 ${total}개</div>
 
   <div>
-    <a href="${contextPath}/list.do?page=1&sort=DESC">내림차순</a>
+    <a href="${contextPath}/list.do?page=1&sort=DESC&display=${display}">내림차순</a>
     <span> | </span>
-    <a href="${contextPath}/list.do?page=1&sort=ASC">오름차순</a>    
+    <a href="${contextPath}/list.do?page=1&sort=ASC&display=${display}">오름차순</a>
   </div>
+  
+  <div>
+    <select id="display">
+      <option>20</option>
+      <option>50</option>
+      <option>100</option>      
+    </select>
+  </div>
+  <script>
+    const display = document.getElementById('display');
+    display.value = ${display};
+    display.addEventListener('change', evt=>{
+      location.href = '${contextPath}/list.do?page=1&sort=${sort}&display=' + display.value;
+    })
+  </script>
 
   <table border="1">
     <thead>
@@ -43,7 +56,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4">페이징자리</td>
+        <td colspan="4"></td>
       </tr>
     </tfoot>
   </table>

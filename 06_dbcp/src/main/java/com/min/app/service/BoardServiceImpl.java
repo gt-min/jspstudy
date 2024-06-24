@@ -52,6 +52,8 @@ public class BoardServiceImpl implements BoardService {
     // /board/list.jsp 로 보낼 데이터 저장하기
     request.setAttribute("total", total);
     request.setAttribute("boardList", boardList);
+    request.setAttribute("sort", sort);
+    request.setAttribute("display", display);
     
     // SELECT 이후에는 forward 로 이동한다.
     return new ActionForward("/board/list.jsp", false);
